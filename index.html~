@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
+        <meta charset="utf-8" />        
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-		<link rel="stylesheet" type="text/css" src="css/mystyle.css">
         <script type="text/javascript" src="cordova.js"></script>
         <script>
             var watch = 0;
@@ -17,17 +15,33 @@
 
             function init()
             {
-                 watch = navigator.accelerometer.watchAcceleration(success, failure, {frequency: 400});
-               
-
+      			var iW = window.innerWidth;
+      			var iH = window.innerHeight+40;
+      			canvas= document.getElementById('thisCanvas');
+      			cnv = canvas.getContext("2d");
+      			cnv.canvas.width = iW;
+      			cnv.canvas.height = iH-40;
+      			target = new Image();
+      			target.src = "star-black.png";
+      			xPos = (iW-target.width)/2;
+      			yPos = (iH-target.height)/2;
+      			target.onload = function()
+      			{
+      			    cnv.drawImage(target, xPos, yPos);
+      			}
+      			watch = navigator.accelerometer.watchAcceleration(success, failure, {frequency: 25}); 
             }
 
             function success(accel)
             {
-                document.getElementById("xOut").innerHTML = accel.x;
-                document.getElementById("yOut").innerHTML = accel.y;
-                document.getElementById("zOut").innerHTML = accel.z;
-                   
+                document.getElementById("xOut").innerHTML = accel.x.toFixed(2);
+                document.getElementById("yOut").innerHTML = accel.y.toFixed(2);
+                document.getElementById("zOut").innerHTML = accel.z.toFixed(2);
+                cnv.clearRect(0, 0, canvas.width, canvas.height);
+    			xPos += -1*(accel.x * 1.5);
+    			yPos += (accel.y * 1.5);
+    			cnv.drawImage(target, xPos, yPos);                
+      
             }
 
             function failure()
@@ -36,9 +50,11 @@
             }
         </script>
     <title>Boom-Boom-Boom</title>
+		<link rel="stylesheet" type="text/css" href="css/mystyle.css">
     </head>
     <body>
-        <footer>
+        <canvas id="thisCanvas" ></canvas>
+		<footer>
             <table id="footerTable">
                 <tr>
                     <td>X: <span id="xOut">0</span></td>
