@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>BookaMeal</name>
+    <name>Boom-Boom-Boom</name>
     <description>
-        Just a simple sample of a supple app....
+        Getting my head around accelleration and the physics implied as described by algorithms for movement and inertia....
     </description>
     <author email="sampsokholm@gmail.com" href="http://unplugd.com">
         Unplugd Solutions
