@@ -1,0 +1,40 @@
+<html>
+<head> 
+ 
+<script src="scripts/cordova.js" type="text/javascript"></script>
+<script src="scripts/jquery-1.6.4.js" type="text/javascript"></script>
+<script src="scripts/jquery.mobile-1.0.1.min.js" type="text/javascript"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css" />
+<script type="text/javascript">
+  
+    var sensorAcc = null;
+  
+    document.addEventListener("deviceready", onDeviceReady, false);
+ 
+    function onDeviceReady() {
+        var options = { frequency: 80 };
+ 
+        sensorAcc = navigator.accelerometer.watchAcceleration(accelerometerSuccess, accelerometerError, options);
+		alert('Device ready!');
+    }
+     
+    function accelerometerError() {
+        alert('Failed to load accelerometer!');
+    }
+     
+    function accelerometerSuccess(acceleration) {        
+        var str = 'Acceleration X: ' + acceleration.x + '<br />' +
+                  'Acceleration Y: ' + acceleration.y + '<br />' +
+                  'Acceleration Z: ' + acceleration.z + '<br />';
+        $('div.result').html(str); 
+    }
+     
+</script>
+</head>
+<body>
+ 
+<div class='result'> </div>
+ 
+</body>
+</html>

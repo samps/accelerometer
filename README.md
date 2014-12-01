@@ -1,4 +1,4 @@
-accelerometer
-=============
+camera-android
+==============
 
-A phonegap accelerometer testing ground
+Testing the phonegap camera plugin on android
