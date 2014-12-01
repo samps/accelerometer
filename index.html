@@ -16,7 +16,7 @@
             function init()
             {
       			var iW = window.innerWidth;
-				if iW>300 then iW=iW/2
+				while (iW>300) do iW=iW/2
       			var iH = window.innerHeight+30;
       			canvas= document.getElementById('thisCanvas');
       			cnv = canvas.getContext("2d");
