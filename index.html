@@ -16,13 +16,13 @@
             function init()
             {
       			var iW = window.innerWidth;
-				var iH = window.innerHeight;
+									var iH = window.innerHeight;
       			canvas= document.getElementById('thisCanvas');
       			cnv = canvas.getContext("2d");
       			cnv.canvas.width = iW;
       			cnv.canvas.height = iH-30;
       			target = new Image();
-				target.src = "star-black.png";
+									target.src = "star-black.png";
       			xPos = (iW-target.width)/2;
       			yPos = (iH-target.height)/2;
       			target.onload = function()
